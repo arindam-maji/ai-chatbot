@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t ai-chatbot .'
+                bat 'docker build -t ai-chatbot .'
             }
         }
 
