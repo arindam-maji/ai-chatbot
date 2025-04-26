@@ -22,7 +22,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 8501:8501 ai-chatbot'
+                bat 'docker run -d -p 8501:8501 ai-chatbot'
             }
         }
     }
