@@ -26,16 +26,20 @@ pipeline {
         stage('Deploy') {
             steps {
                 bat '''
-                    echo Stopping and removing existing container if it exists...
-                    docker rm -f chatbot-container || echo "No existing container"
+                    echo Checking if container is already running...
+                    docker ps -a
 
-                    echo Running new container...
+                    echo Removing existing container if it exists...
+                    docker rm -f chatbot-container || echo "No container to remove"
+
+                    echo Attempting to run new Docker container...
                     docker run -d --name chatbot-container -p 8501:8501 ai-chatbot
 
-                    echo Showing running containers...
+                    echo List of running containers:
                     docker ps
                 '''
-            }
-        }
+    }
+}
+
     }
 }
